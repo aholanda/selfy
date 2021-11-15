@@ -1,5 +1,0 @@
-autopsy
-miktex
-obs-studio
-pdf-tk
-wireshark
