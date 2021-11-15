@@ -2,9 +2,6 @@ import os
 import platform
 
 class Install():
-    def __init__(self, os='windows'):
-        self._os = os
-
     @staticmethod
     def run():
         cur_os = platform.system()
@@ -13,4 +10,5 @@ class Install():
             lines = f.readlines()
             for line in lines:
                 cmd = 'choco install -y ' + line
+                print(line)
                 os.system(cmd)
