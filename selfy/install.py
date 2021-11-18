@@ -3,7 +3,7 @@ import platform
 import subprocess
 import sys
 
-sudos = {'Linux': 'sudo', 'Windows': ''}
+sudos = {'Linux': 'sudo', 'Windows': 'powershell -noexit'}
 pkg_mgrs = {'Linux': sudos['Linux'] + ' apt-get', 'Windows': 'choco'}
 install_cmds = {'Linux': pkg_mgrs['Linux'] + ' install -y ', 
                 'Windows': pkg_mgrs['Windows'] + ' install -y '}
@@ -19,11 +19,17 @@ def exec(cmd):
     print(cmd, file=sys.stderr)
     os.system(cmd)
 
+def __script_cmd(p, s):
+    if p == 'Windows':
+        return sudos[p] + ' -noexit "& \'{}\'"'.format(s)
+    else:
+        return sudos[p] + ' ' + s 
+
 
 def install(plat, args):
     script = os.path.join(plat, args + script_exts[plat])
     if os.path.isfile(script):
-        exec(sudos[plat] + ' ' + script)
+        exec(__script_cmd(plat, script))
         sys.exit(1)
     else:
         cmd = install_cmds[plat] + args
