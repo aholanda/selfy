@@ -1,6 +1,9 @@
 # backup
 *~
 
+# /dev/null
+$null
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
