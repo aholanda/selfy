@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
+M='setup>'
 INSTALL='apt-get install -y'
 
 # Setup basic Linux box
 ${INSTALL} git gpg sudo wget
 
-# Set sudo to not prompt for password
-sed -i 's/^#\s*\(%sudo\s*ALL=(ALL)\s*NOPASSWD:\s*ALL\)/\1/' /etc/sudoers
+echo "$M set sudo group to not be prompted for password" 
+sed -i 's/^%sudo\s*ALL=(ALL:ALL)\s*ALL/%sudo ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
 
