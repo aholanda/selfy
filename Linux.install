@@ -3,9 +3,13 @@ emacs
 gcc
 gdb
 git
+gnuplot
 iamerican-insane
 ibritish-insane
 make
+maxima
+octave
+scilab
 texlive-font-utils
 texlive-fonts-extra
 texlive-fonts-recommended
