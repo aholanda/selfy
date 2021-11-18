@@ -29,7 +29,6 @@ def install(plat, args):
     script = os.path.join(plat, args + script_exts[plat])
     if os.path.isfile(script):
         exec(__script_cmd(plat, script))
-        sys.exit(1)
     else:
         cmd = install_cmds[plat] + args + dev_nulls[plat]
         exec(cmd)
