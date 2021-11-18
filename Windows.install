@@ -1,10 +1,12 @@
 7zip.install
+cmake
 curl
 firefox
 gedit
 git
 golang
 googlechrome
+imgburn
 libreoffice-fresh
 llvm
 lua
@@ -14,7 +16,6 @@ miktex
 mingw
 nasm
 obs-studio
-openssh
 oraclejdk
 pandoc
 rufus
@@ -27,6 +28,7 @@ teamviewer
 tor
 unzip
 vim
+virtualbox
 vlc
 wget
 winrar
