@@ -20,9 +20,13 @@ def install_cmd(plat, args):
     cmd = None
     if plat == 'Windows':
         if args == 'ssh':
-            return ['powershell', '-Command', 'Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0\n']
+            return ['powershell', 
+                    '-Command', 
+                    'Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0']
         elif args == 'sshd':
-            return ['powershell', '-Command', 'Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0\n']
+            return ['powershell',  
+                    '-Command', 
+                    'Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0']
         else:
             cmd = 'choco install -y ' + args
         return ["powershell", "-Command", cmd]
@@ -43,6 +47,7 @@ def install_pkgs(plat):
     with open(fn) as f:
         lines = f.readlines()
         for pkg in lines:
+            pkg = pkg.strip()
             install(plat, pkg)
 
 
