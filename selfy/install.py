@@ -1,6 +1,5 @@
 import os
 import platform
-import subprocess
 import sys
 
 sudos = {'Linux': 'sudo', 'Windows': 'powershell -noexit'}
@@ -8,7 +7,7 @@ pkg_mgrs = {'Linux': sudos['Linux'] + ' apt-get', 'Windows': 'choco'}
 install_cmds = {'Linux': pkg_mgrs['Linux'] + ' install -y ', 
                 'Windows': pkg_mgrs['Windows'] + ' install -y '}
 script_exts = {'Linux': '.sh', 'Windows': '.ps1'}
-
+dev_nulls = {'Linux': ' >/dev/null', 'Windows': ' >$null'}
 
 def fatal(msg):
     print(msg, file=sys.stderr)
@@ -32,7 +31,7 @@ def install(plat, args):
         exec(__script_cmd(plat, script))
         sys.exit(1)
     else:
-        cmd = install_cmds[plat] + args
+        cmd = install_cmds[plat] + args + dev_nulls[plat]
         exec(cmd)
 
 
