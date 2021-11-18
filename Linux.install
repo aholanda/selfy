@@ -6,9 +6,12 @@ git
 gnuplot
 iamerican-insane
 ibritish-insane
+libopenblas-base
 make
 maxima
 octave
+r-base
+r-base-dev
 scilab
 texlive-font-utils
 texlive-fonts-extra
