@@ -10,6 +10,7 @@ imgburn
 libreoffice-fresh
 llvm
 lua
+lunacy
 make
 microsoft-windows-terminal
 miktex
@@ -20,6 +21,7 @@ oraclejdk
 pandoc
 rufus
 rust
+sketchbook
 spacemacs
 ssh
 sshd
@@ -28,7 +30,6 @@ teamviewer
 tor
 unzip
 vim
-virtualbox
 vlc
 wget
 winrar
