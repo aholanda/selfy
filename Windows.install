@@ -5,6 +5,8 @@ curl
 firefox
 gedit
 git
+# OpenGL
+glfw3
 golang
 googlechrome
 imgburn
