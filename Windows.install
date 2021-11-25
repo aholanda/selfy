@@ -1,5 +1,6 @@
 7zip.install
 anki
+anydesk
 audacity
 cmake
 curl
@@ -30,7 +31,6 @@ spacemacs
 ssh
 sshd
 sysinternals
-teamviewer
 tor
 unzip
 vim
