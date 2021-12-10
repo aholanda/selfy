@@ -47,9 +47,9 @@ def install_pkgs(plat):
 
 def update(plat, are_pkgs=False):
     if plat == 'Linux':
-        update = 'update'
+        update = ' update '
         if are_pkgs:
-            update = 'upgrade'
+            update = ' upgrade '
         exec(pkg_mgrs[plat] + update + '-y')
     else:
         print('WARNING: update is not implemented for Windows', file=sys.stderr)
