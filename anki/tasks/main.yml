@@ -1,0 +1,7 @@
+---
+- debug: msg="TODO check if anki is installeble for Debian"
+  tags: anki
+
+- name: install
+  apt: name=anki
+  tags: anki
