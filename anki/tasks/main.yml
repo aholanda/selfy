@@ -25,3 +25,12 @@
   when: not anki_bin_register.stat.exists
   tags: anki
 
+- name: install dependencies
+  apt:
+    name: "{{ item }}"
+  loop:
+    - glib-networking
+    - mpv
+  when: anki_bin_register.stat.exists
+  tags: anki
+
