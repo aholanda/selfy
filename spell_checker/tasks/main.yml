@@ -1,0 +1,16 @@
+---
+- name: install spell checkers
+  apt:
+    pkg:
+      - aspell-de
+      - aspell-en
+      - aspell-es
+      - aspell-pt-br
+      - iamerican-insane
+      - ibrazilian
+      - ibritish-insane
+      - ingerman
+      - ispanish
+      - wamerican-insane
+      - wbritish-insane
+
