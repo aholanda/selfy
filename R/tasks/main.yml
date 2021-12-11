@@ -1,0 +1,9 @@
+---
+- name: install
+  apt:
+    pkg:
+      - r-base
+      - r-base-dev
+      - r-cran-ggplot2
+  tags: R
+
