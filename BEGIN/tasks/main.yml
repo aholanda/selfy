@@ -1,0 +1,5 @@
+---
+- name: update repository list of packages
+  apt: update_cache=yes
+  tags: BEGIN
+
