@@ -2,7 +2,8 @@
 
 case $1 in
 	--install)
-		ansible-playbook main.yml
+		shift
+		ansible-playbook main.yml $@
 		;;
 	*)
 		echo "usage: $0 --install"
