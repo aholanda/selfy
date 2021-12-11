@@ -1,5 +1,6 @@
 - hosts: all
   roles:
+    - BEGIN
     - anki
     - C
     - googlechrome
@@ -8,4 +9,5 @@
     - R
     - spell_checker
     - vim
+    - END
 
