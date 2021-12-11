@@ -1,0 +1,11 @@
+- name: install C compilers and tools
+  apt:
+    pkg:
+      - autoconf
+      - clang
+      - gcc
+      - gdb
+      - llvm
+      - make
+      - texinfo
+      - tcc
