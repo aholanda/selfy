@@ -3,3 +3,7 @@
   apt: upgrade=dist
   tags: BEGIN
 
+- name: update apt-file
+  shell: apt-file update
+  tags: BEGIN
+
