@@ -3,3 +3,10 @@
   apt: update_cache=yes
   tags: BEGIN
 
+- name: install core tools
+  apt:
+    name: "{{ item }}"
+  loop:
+    - apt-file
+  tags: BEGIN
+
