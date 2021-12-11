@@ -2,7 +2,9 @@ import os
 import platform
 import sys
 
-sudos = {'Linux': 'sudo', 'Windows': 'powershell'}
+# DISABLE Linux
+# Please use './selfy.sh --linux' command
+sudos = {'Linux': 'echo', 'Windows': 'powershell'}
 pkg_mgrs = {'Linux': sudos['Linux'] + ' apt-get', 'Windows': 'choco'}
 install_cmds = {'Linux': pkg_mgrs['Linux'] + ' install -y ', 
                 'Windows': pkg_mgrs['Windows'] + ' install -y '}
@@ -43,16 +45,6 @@ def install_pkgs(plat):
                 continue
             pkg = pkg.strip()
             install(plat, pkg)
-
-
-def update(plat, are_pkgs=False):
-    if plat == 'Linux':
-        update = ' update '
-        if are_pkgs:
-            update = ' upgrade '
-        exec(pkg_mgrs[plat] + update + '-y')
-    else:
-        print('WARNING: update is not implemented for Windows', file=sys.stderr)
 
 
 class Install():
