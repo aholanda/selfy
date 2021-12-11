@@ -1,5 +1,9 @@
 - hosts: all
   roles:
     - anki
+    - C
+    - googlechrome
     - latex
+    - R
+    - spell_checker
 
