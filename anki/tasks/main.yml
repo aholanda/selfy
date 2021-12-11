@@ -1,7 +1,27 @@
 ---
-- debug: msg="TODO check if anki is installeble for Debian"
+- set_fact:
+    anki_install_script: /tmp/anki_install.sh
+  tags: anki
+
+- name: check if anki is installed
+  stat:
+    path: /usr/local/bin/anki
+  register: anki_bin_register
+  tags: anki
+
+- name: copy anki installation script
+  template:
+    src: install.sh.j2
+    dest: /tmp/anki_install.sh
+    mode: '0750'
+    owner: root
+    group: root
+  register: anki_register
+  when: not anki_bin_register.stat.exists
   tags: anki
 
 - name: install
-  apt: name=anki
+  shell: "{{ anki_install_script }}"
+  when: not anki_bin_register.stat.exists
   tags: anki
+
