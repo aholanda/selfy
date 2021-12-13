@@ -12,10 +12,14 @@
     - simple-scan
   tags: scanner
 
-- name: add user "{{ scanner_user }}" to scanner group
+- name: add user "{{ scanner_user }}" to scanner groups
+  failed_when: false
   user:
     name: "{{ scanner_user }}"
     append: yes
-    groups: scanner
+    groups: "{{ item }}"
+  loop:     
+    - saned
+    - scanner
   tags: scanner
 
