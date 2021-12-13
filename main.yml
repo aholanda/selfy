@@ -7,6 +7,7 @@
     - latex
     - python3
     - R
+    - scanner
     - spell_checker
     - vim
     - END
