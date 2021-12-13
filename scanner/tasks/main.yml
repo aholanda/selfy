@@ -1,0 +1,21 @@
+---
+- set_fact:
+    scanner_user: "{{ lookup('env', 'USER') }}"
+  tags: scanner
+
+- name: install backend and tools
+  apt:
+    name: "{{ item }}"
+  loop:
+    - sane
+    - xsane
+    - simple-scan
+  tags: scanner
+
+- name: add user "{{ scanner_user }}" to scanner group
+  user:
+    name: "{{ scanner_user }}"
+    append: yes
+    groups: scanner
+  tags: scanner
+
