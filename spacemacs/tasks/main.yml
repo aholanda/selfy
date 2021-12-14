@@ -1,0 +1,10 @@
+---
+- import_role: name=emacs
+  tags: spacemacs
+
+- name: clone it
+  git:
+    repo: 'https://github.com/syl20bnr/spacemacs'
+    dest: "{{ lookup('env', 'HOME') }}/.emacs.d"
+  tags: spacemacs
+
