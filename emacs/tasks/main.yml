@@ -1,0 +1,5 @@
+---
+- name: install
+  apt: name=emacs
+  tags: emacs
+
