@@ -8,6 +8,7 @@
     - python3
     - R
     - scanner
+    - spacemacs
     - spell_checker
     - vim
     - END
