@@ -1,0 +1,8 @@
+---
+- name: install core packages
+  apt:
+    name: "{{ item }}"
+  loop:
+    - cups
+    - hplip
+  tags: printer
