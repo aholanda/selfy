@@ -1,0 +1,10 @@
+- hosts: all
+  roles:
+    - BEGIN
+    - googlechrome
+    - libreoffice
+    - scanner
+    - spell_checker
+    - vim
+    - END
+
