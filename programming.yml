@@ -1,0 +1,15 @@
+- hosts: all
+  roles:
+    - BEGIN
+    - anki
+    - C
+    - googlechrome
+    - latex
+    - python3
+    - R
+    - scanner
+    - spacemacs
+    - spell_checker
+    - vim
+    - END
+
