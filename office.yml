@@ -3,6 +3,7 @@
     - BEGIN
     - googlechrome
     - libreoffice
+    - printer
     - scanner
     - spell_checker
     - vim
