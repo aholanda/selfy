@@ -1,0 +1,22 @@
+---
+- name: install dependencies
+  apt:
+    name: "{{ item }}"
+  loop:
+    - software-properties-common
+    - apt-transport-https
+    - curl
+  tags: vscode
+
+- name: add gpg key
+  shell: 'curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add -'
+  tags: vscode
+
+- name: add repository
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+  tags: vscode
+
+- name: install
+  apt: name=code
+  tags: vscode
