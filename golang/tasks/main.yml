@@ -1,4 +1,4 @@
 ---
 - name: install
-  apt: name=golang
+  package: name=golang
   tags: golang

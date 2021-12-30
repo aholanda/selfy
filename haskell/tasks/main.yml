@@ -1,4 +1,4 @@
 ---
 - name: install compiler
-  apt: name=ghc
+  package: name=ghc
   tags: haskell

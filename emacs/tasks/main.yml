@@ -1,6 +1,6 @@
 ---
 - name: install
-  apt: name=emacs
+  package: name=emacs
   tags: emacs
 
 - name: include tasks for {{ ansible_os_family }} family
