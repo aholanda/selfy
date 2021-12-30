@@ -1,0 +1,9 @@
+---
+- name: install
+  apt:
+    name: "{{ item }}"
+  loop:
+    - lua5.2
+    - lua5.3
+    - lua5.4
+  tags: lua
