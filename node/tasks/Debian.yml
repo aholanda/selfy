@@ -1,0 +1,8 @@
+- name: install core packages
+  apt:
+    name: "{{ item }}"
+  loop:
+    - node-is-npm
+    - node-typescript
+  when: is_webdev_env is defined and is_webdev_env
+  tags: node
