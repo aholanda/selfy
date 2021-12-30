@@ -11,6 +11,8 @@
     - elpa-projectile
     - elpa-rtags
     - elpa-rust-mode
+    - elpa-scala-mode
+    - elpa-yaml-mode
     - elpa-yasnippet
     - rtags
   tags: emacs
