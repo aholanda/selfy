@@ -2,7 +2,9 @@
   roles:
     - BEGIN
     - googlechrome
+    - image
     - libreoffice
+    - pdf
     - printer
     - scanner
     - spell_checker
