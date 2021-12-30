@@ -4,6 +4,7 @@
     name: "{{ item }}"
   loop:
     - golang-mode
+    - elpa-haskell-mode
     - elpa-helm
     - elpa-lua-mode
     - elpa-magit
