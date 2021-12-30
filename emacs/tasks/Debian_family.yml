@@ -5,6 +5,7 @@
   loop:
     - erlang-mode
     - golang-mode
+    - elpa-clojure-mode
     - elpa-haskell-mode
     - elpa-helm
     - elpa-lua-mode
