@@ -3,10 +3,10 @@
 Automate some OS tasks (for now, only installation of a functional environment).
 
 ## Linux (Debian family)
-Dependencies: `git`, `make`
 
 - Auto-(re|un)installation:
 
+Dependency: `make`
 ```
 # Install selfy
 sudo make install
