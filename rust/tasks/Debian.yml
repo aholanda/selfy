@@ -1,0 +1,11 @@
+---
+- name: install core packages
+  apt:
+    name: "{{ item }}"
+  loop:
+    - cargo
+    - rust-doc
+    - rust-gdb
+    - rust-lldb
+    - rustc
+  tags: rust
