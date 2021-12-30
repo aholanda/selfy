@@ -1,0 +1,8 @@
+---
+- name: install webdev environment packages
+  apt:
+    name: "{{ item }}"
+  loop:
+    - python3-django
+  when: is_webdev_env is defined and is_webdev_env
+  tags: python3
