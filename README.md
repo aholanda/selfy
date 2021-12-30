@@ -7,6 +7,7 @@ Automate some OS tasks (for now, only installation of a functional environment).
 - Auto-(re|un)installation:
 
 ```
+# Pay attention to `./`
 # Install selfy
 ./selfy --install
 # Uninstall selfy
@@ -16,6 +17,8 @@ Automate some OS tasks (for now, only installation of a functional environment).
 ```
 
 ### Installation of packages
+
+After installing `selfy`, one of the following commands can be executed:
 
 ```
 # Office environment
