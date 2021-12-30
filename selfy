@@ -1,56 +1,6 @@
 #!/usr/bin/env bash
 
-THIS=selfy
-SELFY_CFGDIR='/etc/selfy/'
-SELFY_BINDIR='/usr/local/bin/'
-
-function check_selfy_dir {
-	if [ ! -d ${SELFY_CFGDIR} ];
-	then
-		SELFY_CFGDIR=$(pwd)
-		>&2 echo "> Configuration directory: \"${SELFY_CFGDIR}\""
-	fi
-}
-
-
-function check_install_constraints {
-	if [ "$(pwd)" == $SELFY_BINDIR ];
-	then
-		>&2 echo "ERROR: Cannot run (re|un)installation from ${SELFY_BINDIR}"
-		>&2 echo "ADVICE: Try to install using files dowloaded git repository."
-		>&2 echo "https://github.com/ajholanda/selfy"
-		exit 1
-	fi
-}
-
-function __install {
-	check_install_constraints 
-	if [ ! -d ${SELFY_CFGDIR} ];
-	then
-		sudo mkdir ${SELFY_CFGDIR}
-	fi
-	sudo cp -v selfy ${SELFY_BINDIR}
-	sudo cp -v *.yml ${SELFY_CFGDIR}
-	sudo find . -maxdepth 1 -type d \
-		-not -path "." \
-		-not -path "./.git"  \
-		-not -path "./win_*" \
-		-not -path "./Windows" \
-		-exec cp -vr {} ${SELFY_CFGDIR} \;
-	>&2 echo "Installation completed."
-}
-
-function uninstall {
-	sudo rm -rfv ${SELFY_CFGDIR}
-	sudo rm -fv ${SELFY_BINDIR}/selfy
-	>&2 echo "${THIS} was removed."
-	sudo sync
-}
-
-function reinstall {
-	uninstall
-	__install
-}
+CFGDIR=/etc/selfy
 
 function setup {
 	M='setup>'
@@ -79,12 +29,6 @@ function print_usage_and_exit {
 		>&2 echo "     All arguments accepted by ansible-playbook command."
 		>&2 echo "  --setup"
 		>&2 echo "    Setup the environment to execute $0."
-		>&2 echo "  --install"
-		>&2 echo "    Install ${THIS}."
-		>&2 echo "  --uninstall"
-		>&2 echo "    Uninstall ${THIS}."
-		>&2 echo "  --reinstall"
-		>&2 echo "    Reinstall ${THIS}."
 		exit 1
 }
 
@@ -99,32 +43,17 @@ then
 fi
 
 case $1 in
-	--install)
-		shift
-		__install
-		;;
-	--uninstall)
-		shift
-		uninstall
-		;;
-	--reinstall)
-		shift
-		reinstall
-		;;
 	--programming)
-		check_selfy_dir
 		shift
-		ansible-playbook ${SELFY_CFGDIR}/programming.yml $@
+		ansible-playbook ${CFGDIR}/programming.yml $@
 		;;
 	--office)
-		check_selfy_dir
 		shift
-		ansible-playbook ${SELFY_CFGDIR}/office.yml $@
+		ansible-playbook ${CFGDIR}/office.yml $@
 		;;
 	--webdev)
-		check_selfy_dir
 		shift
-		ansible-playbook ${SELFY_CFGDIR}/programming.yml --extra-vars "is_webdev_env=True" $@
+		ansible-playbook ${CFGDIR}/programming.yml --extra-vars "is_webdev_env=True" $@
 		;;
 	--setup)
 		shift
