@@ -1,0 +1,4 @@
+---
+- name: install compiler
+  package: name=erlang
+  tags: erlang
