@@ -1,4 +1,4 @@
 ---
 - name: install
-  apt: name=scala
+  package: name=scala
   tags: scala
