@@ -2,7 +2,7 @@
 
 Automate some OS tasks (for now, only installation of a functional environment).
 
-## Linux
+## Linux (Debian family)
 
 - Auto-(re|un)installation:
 
@@ -26,7 +26,7 @@ selfy --programming
 selfy --webdev
 ```
 
-If you want know the packages that will be installed, just run with flag `--check`:
+If you want know the packages that will be installed, just run `selfy` with flag `--check`:
 
 ```
 # What are the packages from office environment?
