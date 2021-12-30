@@ -1,4 +1,4 @@
 ---
 - name: install
   apt: name=tmux
-  tags: screen
+  tags: tmux
