@@ -4,16 +4,20 @@
     - assembly
     - anki
     - C
+    - clojure
     - erlang
     - fortran
+    - gnuplot
     - golang
     - googlechrome
     - haskell
     - java
+    - julia
     - latex
     - lua
     - node
     - php
+    - prolog
     - python3
     - R
     - rust
