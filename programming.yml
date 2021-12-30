@@ -7,9 +7,10 @@
     - latex
     - python3
     - R
-    - scanner
+    - screen
     - spacemacs
     - spell_checker
+    - tmux
     - vim
     - vscode
     - END
