@@ -2,12 +2,19 @@ PROJ=selfy
 CFGDIR=/etc/selfy/
 BINDIR=/usr/local/bin/
 
+PKG := apt-get
+PKG_INSTALL := $(PKG) install -y
+PKG_UNINSTALL := $(PKG) remove -y
+PKGs := git gpg sudo wget ansible
+
+ANSIBLE_DIR := /etc/ansible
+
 default: setup
 
 $(CFGDIR):
 	mkdir $(CFGDIR)
 
-install: $(CFGDIR)
+install: $(CFGDIR) setup
 	-install selfy $(BINDIR)
 	-cp *.yml $(CFGDIR)
 	-find . -maxdepth 1 -type d \
@@ -25,7 +32,17 @@ uninstall:
 
 reinstall: uninstall install
 
-setup:
-	./selfy --setup
+.PHONY: default install uninstall reinstall setup TIDY
 
-.PHONY: default install uninstall reinstall setup
+$(ANSIBLE_DIR):
+	mkdir $(ANSIBLE_DIR)
+
+setup: $(ANSIBLE_DIR)
+	-$(PKG_INSTALL) $(PKGS) >/dev/null
+	-cp ./hosts ${ANSIBLE_DIR}
+	-sed -i 's/^%sudo\s*ALL=(ALL:ALL)\s*ALL/%sudo ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
+
+TIDY: uninstall
+	-$(PKG_UNINSTALL) $(PKGs) >/dev/null
+	-$(RM) -r $(ANSIBLE_DIR)/hosts
+
