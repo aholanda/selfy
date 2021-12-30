@@ -3,6 +3,7 @@
   apt:
     name: "{{ item }}"
   loop:
+    - elpa-php-mode
     - elpa-web-mode
   when: is_webdev_env is defined and is_webdev_env
   tags: emacs
