@@ -10,3 +10,7 @@
     - jupyter
     - virtualenv
   tags: python3
+
+- name: include tasks for {{ ansible_os_family }} family
+  include_tasks: "{{ ansible_os_family }}_family.yml"
+  tags: python3
