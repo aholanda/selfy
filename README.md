@@ -4,16 +4,33 @@ Automate some OS tasks (for now, only installation of a functional environment).
 
 ## Linux
 
-- Setup of a core environment:
+- Auto-(re|un)installation:
 
 ```
-./setup.sh
+# Install selfy
+./selfy --install
+# Uninstall selfy
+./selfy --uninstall
+# Reinstall selfy
+./selfy --reinstall
 ```
 
-- Installation of packages using Ansible:
+### Installation of packages
 
 ```
-./selfy.sh --install
+# Office environment
+selfy --office
+# Programming environment
+selfy --programming
+# Web development environment
+selfy --webdev
+```
+
+If you want know the packages that will be installed, just run with flag `--check`:
+
+```
+# What are the packages from office environment?
+selfy --office --check
 ```
 
 ## Windows
