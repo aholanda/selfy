@@ -5,6 +5,7 @@
   loop:
     - golang-mode
     - elpa-helm
+    - elpa-lua-mode
     - elpa-magit
     - elpa-markdown-mode
     - elpa-org
