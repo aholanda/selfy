@@ -3,17 +3,17 @@
 Automate some OS tasks (for now, only installation of a functional environment).
 
 ## Linux (Debian family)
+Dependencies: `git`, `make`
 
 - Auto-(re|un)installation:
 
 ```
-# Pay attention to `./`
 # Install selfy
-./selfy --install
+sudo make install
 # Uninstall selfy
-./selfy --uninstall
+sudo make uninstall
 # Reinstall selfy
-./selfy --reinstall
+sudo make reinstall
 ```
 
 ### Installation of packages
