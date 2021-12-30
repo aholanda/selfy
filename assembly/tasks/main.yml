@@ -1,0 +1,10 @@
+---
+- name: install core packages
+  apt:
+    name: "{{ item }}"
+  loop:
+    - binutils
+    - gdb
+    - lldb
+    - nasm
+  tags: assembly
