@@ -1,0 +1,10 @@
+---
+- name: install tools
+  package:
+    name: "{{ item }}"
+  loop:
+    - eog
+    - gimp
+    - imagemagick
+    - inkscape
+  tags: image
