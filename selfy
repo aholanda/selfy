@@ -1,0 +1,140 @@
+#!/usr/bin/env bash
+
+THIS=selfy
+SELFY_CFGDIR='/etc/selfy/'
+SELFY_BINDIR='/usr/local/bin/'
+
+function check_selfy_dir {
+	if [ ! -d ${SELFY_CFGDIR} ];
+	then
+		SELFY_CFGDIR=$(pwd)
+		>&2 echo "> Configuration directory: \"${SELFY_CFGDIR}\""
+	fi
+}
+
+
+function check_install_constraints {
+	if [ "$(pwd)" == $SELFY_BINDIR ];
+	then
+		>&2 echo "ERROR: Cannot run (re|un)installation from ${SELFY_BINDIR}"
+		>&2 echo "ADVICE: Try to install using files dowloaded git repository."
+		>&2 echo "https://github.com/ajholanda/selfy"
+	fi
+	exit 1
+}
+
+function __install {
+	check_install_constraints 
+	if [ ! -d ${SELFY_CFGDIR} ];
+	then
+		sudo mkdir ${SELFY_CFGDIR}
+	fi
+	sudo cp -v selfy ${SELFY_BINDIR}
+	sudo cp -v *.yml ${SELFY_CFGDIR}
+	sudo find . -maxdepth 1 -type d \
+		-not -path "." \
+		-not -path "./.git"  \
+		-not -path "./win_*" \
+		-not -path "./Windows" \
+		-exec cp -vr {} ${SELFY_CFGDIR} \;
+	>&2 echo "Installation completed."
+}
+
+function uninstall {
+	sudo rm -rfv ${SELFY_CFGDIR}
+	sudo rm -fv ${SELFY_BINDIR}/selfy
+	>&2 echo "${THIS} was removed."
+	sudo sync
+}
+
+function reinstall {
+	uninstall
+	__install
+}
+
+function setup {
+	M='setup>'
+	INSTALL='sudo apt-get install -y'
+	ANSIBLE_DIR='/etc/ansible'
+
+	# Setup basic Linux box
+	${INSTALL} git gpg sudo wget ansible && \
+		if  [ ! -d ${ANSIBLE_DIR} ];then sudo mkdir ${ANSIBLE_DIR};fi &&\
+	      	sudo cp ./hosts ${ANSIBLE_DIR}
+
+	echo "$M set sudo group to not be prompted for password" 
+	sudo sed -i 's/^%sudo\s*ALL=(ALL:ALL)\s*ALL/%sudo ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
+}
+
+function print_usage_and_exit {
+		>&2 echo "usage: $0 [OPTIONS] <ANSIBLE-PLAYBOOK ARGS>"
+		>&2 echo " where OPTIONS may be:"
+		>&2 echo "  --office"
+		>&2 echo "    Install packages to setup a basic office environment."
+		>&2 echo "  --programming"
+		>&2 echo "    Install packages to setup a basic computer programming (not web) environment."
+		>&2 echo "  --webdev"
+		>&2 echo "    Install packages to setup a basic web development environment."
+		>&2 echo "  <ANSIBLE-PLAYBOOK ARGS> [Optional]"
+		>&2 echo "     All arguments accepted by ansible-playbook command."
+		>&2 echo "  --setup"
+		>&2 echo "    Setup the environment to execute $0."
+		>&2 echo "  --install"
+		>&2 echo "    Install ${THIS}."
+		>&2 echo "  --uninstall"
+		>&2 echo "    Uninstall ${THIS}."
+		>&2 echo "  --reinstall"
+		>&2 echo "    Reinstall ${THIS}."
+		exit 1
+}
+
+if [ "$#" -eq 0 ];
+then
+	print_usage_and_exit
+fi
+
+if [ "`which ansible`" == "" ];
+then
+	setup
+fi
+
+case $1 in
+	--install)
+		shift
+		__install
+		;;
+	--uninstall)
+		shift
+		uninstall
+		;;
+	--reinstall)
+		shift
+		reinstall
+		;;
+	--programming)
+		check_selfy_dir
+		shift
+		ansible-playbook ${SELFY_CFGDIR}/programming.yml $@
+		;;
+	--office)
+		check_selfy_dir
+		shift
+		ansible-playbook ${SELFY_CFGDIR}/office.yml $@
+		;;
+	--webdev)
+		check_selfy_dir
+		shift
+		ansible-playbook ${SELFY_CFGDIR}/programming.yml --extra-vars "is_webdev_env=True" $@
+		;;
+	--setup)
+		shift
+		setup
+		;;
+	*)
+		shift
+		print_usage_and_exit
+		;;
+esac
+
+exit 0
+
