@@ -1,0 +1,8 @@
+---
+- name: install major mode(s) for webdev environment
+  apt:
+    name: "{{ item }}"
+  loop:
+    - elpa-web-mode
+  when: is_webdev_env is defined and is_webdev_env
+  tags: emacs

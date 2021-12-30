@@ -3,3 +3,6 @@
   apt: name=emacs
   tags: emacs
 
+- name: include tasks for {{ ansible_os_family }} family
+  include_tasks: "{{ ansible_os_family }}.yml"
+  tags: emacs
