@@ -1,8 +1,25 @@
 ---
+- name: install major mode(s) for programming environment
+  apt:
+    name: "{{ item }}"
+  loop:
+    - golang-mode
+    - elpa-helm
+    - elpa-magit
+    - elpa-markdown-mode
+    - elpa-org
+    - elpa-projectile
+    - elpa-rtags
+    - elpa-rust-mode
+    - elpa-yasnippet
+    - rtags
+  tags: emacs
+
 - name: install major mode(s) for webdev environment
   apt:
     name: "{{ item }}"
   loop:
+    - elpa-js2-mode
     - elpa-php-mode
     - elpa-web-mode
   when: is_webdev_env is defined and is_webdev_env
