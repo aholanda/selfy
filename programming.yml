@@ -3,10 +3,12 @@
     - BEGIN
     - anki
     - C
+    - golang
     - googlechrome
     - latex
     - python3
     - R
+    - rust
     - screen
     - spacemacs
     - spell_checker
