@@ -1,0 +1,9 @@
+---
+- name: install core packages
+  apt:
+    name: "{{ item }}"
+  loop:
+    - default-jdk
+    - ant
+    - maven
+  tags: java
