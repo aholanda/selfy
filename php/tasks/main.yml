@@ -1,0 +1,16 @@
+---
+- import_role: name=apache2
+  when: is_webdev_env is defined and is_webdev_env
+  tags: php
+
+- name: install core packages
+  apt:
+    name: "{{ item }}"
+  loop:
+    - php
+    - composer
+    - php-mysql
+    - php-pgsql
+    - php-sqlite3
+  when: is_webdev_env is defined and is_webdev_env
+  tags: php
