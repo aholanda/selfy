@@ -19,8 +19,8 @@ function check_install_constraints {
 		>&2 echo "ERROR: Cannot run (re|un)installation from ${SELFY_BINDIR}"
 		>&2 echo "ADVICE: Try to install using files dowloaded git repository."
 		>&2 echo "https://github.com/ajholanda/selfy"
+		exit 1
 	fi
-	exit 1
 }
 
 function __install {
