@@ -1,0 +1,8 @@
+---
+- name: install tools
+  package:
+    name: "{{ item }}"
+  loop:
+    - evince
+    - pdftk
+  tags: pdf
