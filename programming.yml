@@ -1,6 +1,7 @@
 - hosts: all
   roles:
     - BEGIN
+    - assembly
     - anki
     - C
     - golang
@@ -12,6 +13,7 @@
     - python3
     - R
     - rust
+    - scala
     - screen
     - spacemacs
     - spell_checker
