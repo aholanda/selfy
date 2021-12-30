@@ -3,6 +3,7 @@
   apt:
     name: "{{ item }}"
   loop:
+    - erlang-mode
     - golang-mode
     - elpa-haskell-mode
     - elpa-helm
