@@ -1,0 +1,4 @@
+---
+- name: install
+  apt: name=apache2
+  tags: apache2
