@@ -1,0 +1,19 @@
+---
+# Depends on libreoffice calc, R and gnuplot
+- import_role: name=gnuplot
+  tags: finance
+
+- import_role: name=libreoffice
+  tags: finance
+
+- import_role: name=R
+  tags: finance
+
+- name: install packages
+  package:
+    name: "{{ item }}"
+  loop:
+    - gnucash
+    - hledger
+    - ledger
+  tags: finance
