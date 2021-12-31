@@ -2,6 +2,7 @@
 - debug:
     msg: 
       - 'Documentation'
+      - 'pytrainer - https://github.com/pytrainer/pytrainer'
       - 'workrave - https://workrave.org/docs/'
   tags: health
 
@@ -9,6 +10,7 @@
   package:
     name: "{{ item }}"
   loop:
+    - pytrainer
     - workrave
   tags: health
 
