@@ -19,6 +19,7 @@
     append: yes
     groups: "{{ item }}"
   loop:     
+    - lp
     - saned
     - scanner
   tags: scanner
