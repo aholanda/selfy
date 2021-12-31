@@ -1,0 +1,14 @@
+---
+- debug:
+    msg: 
+      - 'Documentation'
+      - 'workrave - https://workrave.org/docs/'
+  tags: health
+
+- name: install packages
+  package:
+    name: "{{ item }}"
+  loop:
+    - workrave
+  tags: health
+
