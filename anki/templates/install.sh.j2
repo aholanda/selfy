@@ -6,7 +6,7 @@ ANKI="anki-${VERSION}-${OS}"
 
 cd /tmp
 wget https://github.com/ankitects/anki/releases/download/${VERSION}/${ANKI}.tar.bz2
-tar ${ANKI}.tar.bz2
+tar xfvj ${ANKI}.tar.bz2
 cd ${ANKI}
 ./install.sh
 cd .. && rm -rf ${ANKI}*
