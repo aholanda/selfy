@@ -22,6 +22,7 @@
 
 - name: install
   shell: "{{ anki_install_script }}"
+  register: anki_shell_return
   when: not anki_bin_register.stat.exists
   tags: anki
 
@@ -31,6 +32,6 @@
   loop:
     - glib-networking
     - mpv
-  when: anki_bin_register.stat.exists
+  when: "anki_shell_return.rc ==0"
   tags: anki
 
